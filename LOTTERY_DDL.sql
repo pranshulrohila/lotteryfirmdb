@@ -11,6 +11,9 @@ CREATE TABLE lottery_user (
     user_version   INT DEFAULT 1 NOT NULL
 );
 
+CREATE SEQUENCE SEQ_LOTTERY_USER_ID START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+COMMENT ON COLUMN lottery_user.user_id IS 'This USER_ID primary key is created using SEQ_LOTTERY_USER_ID';
+
 CREATE TABLE slot (
     slot_id        INT PRIMARY KEY,
     slot_date      DATE NOT NULL,
@@ -19,6 +22,9 @@ CREATE TABLE slot (
     updated_dt     TIMESTAMP DEFAULT current_timestamp NOT NULL,
     slot_version   INT DEFAULT 1 NOT NULL
 );
+
+CREATE SEQUENCE SEQ_SLOT_ID START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+COMMENT ON COLUMN slot.slot_id IS 'This slot_id primary key is created using SEQ_SLOT_ID';
 
 CREATE TABLE lottery (
     lottery_id       INT PRIMARY KEY,
@@ -35,6 +41,9 @@ CREATE TABLE lottery (
     lottery_version  INT DEFAULT 1 NOT NULL
 );
 
+CREATE SEQUENCE SEQ_LOTTERY_ID START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+COMMENT ON COLUMN lottery.lottery_id IS 'This lottery_id primary key is created using SEQ_LOTTERY_ID';
+
 CREATE TABLE payment (
     payment_id            INT PRIMARY KEY,
     user_id               INT
@@ -49,4 +58,8 @@ CREATE TABLE payment (
     updated_dt            TIMESTAMP DEFAULT current_timestamp NOT NULL,
     payment_version       INT DEFAULT 1 NOT NULL
 );
+
+CREATE SEQUENCE SEQ_PAYMENT_ID START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+COMMENT ON COLUMN payment.payment_id IS 'This payment_id primary key is created using SEQ_PAYMENT_ID';
+
 commit;
